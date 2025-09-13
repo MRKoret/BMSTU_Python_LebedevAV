@@ -1,1 +1,1 @@
-print("Hello Python!")#komentari
+print("Hello Python!")
