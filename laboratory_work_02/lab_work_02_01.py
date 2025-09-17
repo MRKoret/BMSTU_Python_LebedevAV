@@ -6,7 +6,7 @@ if x <= -8:
     y = -3
 elif -8 < x < -3:
     y = (3 / 5) * x + 9 / 5
-if x == -3 or x==3:
+elif x == -3 or x==3:
     y=0
 elif -3<x<3:
     y = -sqrt(9-x**2)
