@@ -10,7 +10,7 @@ elif -8<x<-3:
 elif x == -3 or x == 3:
     y = 0
 elif -3<x<3:
-    y = sqrt(9-x**2)
+    y = -sqrt(9-x**2)
 elif 3<x<5:
     y = x-3
 else:
