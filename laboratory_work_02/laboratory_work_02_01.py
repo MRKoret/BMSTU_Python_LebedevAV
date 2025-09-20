@@ -1,11 +1,11 @@
 from math import *
 
 x=float(input("Введите значение для x: "))
-y=0.0
+y=0
 
-if x < -8:
+if x <= -8:
     y = -3
-elif -8<=x<-3:
+elif -8<x<-3:
     y = (1/4) * x + 3/4
 elif -3<=x<3:
     y = -sqrt(9-x**2)
