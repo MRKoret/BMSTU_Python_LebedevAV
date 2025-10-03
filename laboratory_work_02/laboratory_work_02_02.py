@@ -4,7 +4,7 @@
 # 3. Исправить отчет в соответствии с методическими указаниями в шаблоне отчета
 # (см. файл template_laboratory_report_00.ott).
 
-from math import sqrt
+from math import sqrt # Для решения данной задачи требуется только функция sqrt
 
 def main():
     radius = float(input("Введите значение для радиуса R: "))
