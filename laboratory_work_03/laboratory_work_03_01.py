@@ -7,9 +7,9 @@
 from math import sqrt # Для решения данной задачи требуется только функция sqrt
 
 print("Введите Xbeg, Xend и dx")
-xb=float(input("Введите Xbeg: "))
-xe=float(input("Введите Xend: "))
-dx=float(input("Введите dx: "))
+xb=float(input("Введите Xначальное: "))
+xe=float(input("Введите Xконечное: "))
+dx=float(input("Введите шаг dx: "))
 
 y=0
 xt=xb
