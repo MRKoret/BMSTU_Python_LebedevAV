@@ -6,12 +6,12 @@ def z2(alpha):
     return 2 * sqrt(2) * cos(alpha) * sin((pi / 4) + 2 * alpha)
 
 num = [0,30,45,60,90,180]
-with open(('lab1_input.txt'), 'wt') as inp:
+with open(('input.txt'), 'wt') as inp:
     for i in num:
         print(i, file=inp)
 
-with open(('lab1_input.txt')) as inp:
-    with open(('lab1_output.txt'), 'wt') as out:
+with open(('input.txt')) as inp:
+    with open(('output.txt'), 'wt') as out:
         for line in inp:
             alpha = float(line.strip())
             res1 = z1(alpha)
