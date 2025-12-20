@@ -127,7 +127,7 @@ class TextLexer:
 
     def pretty_print(self, tokens: List[Token]):
         """Красиво выводит токены"""
-        print("\n🔤 ТОКЕНЫ ИЗ ТЕКСТА:")
+        print("\nТОКЕНЫ ИЗ ТЕКСТА:")
         print("-" * 40)
         for token in tokens[:-1]:  # Не выводим EOF
             if token.type == TokenType.WORD:
@@ -270,7 +270,7 @@ class MathLexer:
 
     def pretty_print(self, tokens: List[Token]):
         """Красиво выводит токены"""
-        print("\n🔣 ТОКЕНЫ ИЗ МАТЕМАТИКИ:")
+        print("\nТОКЕНЫ ИЗ МАТЕМАТИКИ:")
         print("-" * 40)
         for token in tokens[:-1]:  # Не выводим EOF
             print(f"  {token.type.name:10} → {token.value}")

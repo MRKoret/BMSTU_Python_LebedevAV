@@ -71,7 +71,7 @@ class ASTEvaluator:
 
         try:
             result = self.evaluate(node)
-            steps.append(f"✅ Результат: {result}")
+            steps.append(f"Результат: {result}")
             print(f"  {steps[-1]}")
 
             return {
@@ -81,7 +81,7 @@ class ASTEvaluator:
             }
 
         except Exception as e:
-            steps.append(f"❌ Ошибка: {e}")
+            steps.append(f"Ошибка: {e}")
             print(f"  {steps[-1]}")
 
             return {

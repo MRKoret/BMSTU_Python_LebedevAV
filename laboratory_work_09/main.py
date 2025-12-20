@@ -14,14 +14,14 @@ from dictionary import MathDictionary
 def print_header():
     """Печатает заголовок"""
     print("="*70)
-    print("🧮 ИНТЕРПРЕТАТОР С ДВУМЯ РЕЖИМАМИ")
+    print("ИНТЕРПРЕТАТОР С ДВУМЯ РЕЖИМАМИ")
     print("="*70)
-    print("\n📝 РЕЖИМ 1: ВВОД СЛОВАМИ")
+    print("\nРЕЖИМ 1: ВВОД СЛОВАМИ")
     print("  Пример: 'два плюс три умножить четыре'")
     print("  Поддерживаются: плюс, минус, умножить, разделить, корень")
     print("  Числа словами: от 'ноль' до 'двадцать'")
 
-    print("\n🔢 РЕЖИМ 2: ВВОД СИМВОЛАМИ")
+    print("\nРЕЖИМ 2: ВВОД СИМВОЛАМИ")
     print("  Пример: '2 + 3 * 4' или 'sqrt(9) + 5'")
     print("  Поддерживаются: + - * / ** sqrt()")
     print("  Числа: любые (12, 3.14, -5)")
@@ -29,12 +29,12 @@ def print_header():
 
 def process_text_input(text: str):
     """Обрабатывает ввод словами"""
-    print(f"\n📝 РЕЖИМ СЛОВ: '{text}'")
+    print(f"\nРЕЖИМ СЛОВ: '{text}'")
     print("="*70)
 
     try:
         # 1. Лексический анализ
-        print("\n1️⃣  ЛЕКСИЧЕСКИЙ АНАЛИЗ (слова → токены):")
+        print("\nЛЕКСИЧЕСКИЙ АНАЛИЗ (слова → токены):")
         lexer = TextLexer(text)
         tokens = lexer.tokenize()
         lexer.pretty_print(tokens)
@@ -42,10 +42,10 @@ def process_text_input(text: str):
         # Проверяем на нераспознанные слова
         unknown_words = [t for t in tokens if t.type.name == 'WORD']
         if unknown_words:
-            print(f"\n⚠️  Не распознаны: {[t.value for t in unknown_words]}")
+            print(f"\nНе распознаны: {[t.value for t in unknown_words]}")
 
         # 2. Парсинг
-        print("\n2️⃣  СИНТАКСИЧЕСКИЙ АНАЛИЗ (токены → AST):")
+        print("\nСИНТАКСИЧЕСКИЙ АНАЛИЗ (токены → AST):")
         parser = TextParser(tokens)
         ast = parser.parse()
 
@@ -58,28 +58,28 @@ def process_text_input(text: str):
         result = evaluator.evaluate_with_steps(ast)
 
         # 5. Показываем математическую форму
-        print(f"\n📊 МАТЕМАТИЧЕСКАЯ ФОРМА: {text_to_math(text)}")
+        print(f"\nМАТЕМАТИЧЕСКАЯ ФОРМА: {text_to_math(text)}")
 
         return result
 
     except Exception as e:
-        print(f"\n❌ ОШИБКА: {e}")
+        print(f"\nОШИБКА: {e}")
         return {'success': False, 'error': str(e)}
 
 def process_math_input(expression: str):
     """Обрабатывает ввод символами"""
-    print(f"\n🔢 РЕЖИМ СИМВОЛОВ: '{expression}'")
+    print(f"\nРЕЖИМ СИМВОЛОВ: '{expression}'")
     print("="*70)
 
     try:
         # 1. Лексический анализ
-        print("\n1️⃣  ЛЕКСИЧЕСКИЙ АНАЛИЗ (символы → токены):")
+        print("\nЛЕКСИЧЕСКИЙ АНАЛИЗ (символы → токены):")
         lexer = MathLexer(expression)
         tokens = lexer.tokenize()
         lexer.pretty_print(tokens)
 
         # 2. Парсинг
-        print("\n2️⃣  СИНТАКСИЧЕСКИЙ АНАЛИЗ (токены → AST):")
+        print("\nСИНТАКСИЧЕСКИЙ АНАЛИЗ (токены → AST):")
         parser = MathParser(tokens)
         ast = parser.parse()
 
@@ -92,12 +92,12 @@ def process_math_input(expression: str):
         result = evaluator.evaluate_with_steps(ast)
 
         # 5. Показываем текстовую форму
-        print(f"\n📝 ТЕКСТОВАЯ ФОРМА: {math_to_text(expression)}")
+        print(f"\nТЕКСТОВАЯ ФОРМА: {math_to_text(expression)}")
 
         return result
 
     except Exception as e:
-        print(f"\n❌ ОШИБКА: {e}")
+        print(f"\nОШИБКА: {e}")
         return {'success': False, 'error': str(e)}
 
 def text_to_math(text: str) -> str:
@@ -146,11 +146,11 @@ def math_to_text(expression: str) -> str:
 
     return result
 
-    print("\n📝 РЕЖИМ СЛОВ (ввод → математика → результат):")
+    print("\nРЕЖИМ СЛОВ (ввод → математика → результат):")
     for text, math, result in examples:
         print(f"  '{text}' → '{text_to_math(text)}' = {result}")
 
-    print("\n🔢 РЕЖИМ СИМВОЛОВ (ввод → текст → результат):")
+    print("\nРЕЖИМ СИМВОЛОВ (ввод → текст → результат):")
     for text, math, result in examples:
         print(f"  '{math}' → '{math_to_text(math)}' = {result}")
 
@@ -167,10 +167,10 @@ def interactive_text_mode():
 
     while True:
         try:
-            text = input("\n📝 Введите словами: ").strip()
+            text = input("\nВведите словами: ").strip()
 
             if text.lower() in ['выход', 'exit', 'quit', 'q']:
-                print("👋 Выход из режима слов")
+                print("Выход из режима слов")
                 break
 
             if not text:
@@ -179,9 +179,9 @@ def interactive_text_mode():
             result = process_text_input(text)
 
             if result['success']:
-                print(f"\n🎯 Итог: {result['result']}")
+                print(f"\nИтог: {result['result']}")
             else:
-                print(f"\n❌ Не удалось вычислить")
+                print(f"\nНе удалось вычислить")
 
         except KeyboardInterrupt:
             print("\n\n👋 Выход из программы")
@@ -192,7 +192,7 @@ def interactive_text_mode():
 def interactive_math_mode():
     """Интерактивный режим для ввода символами"""
     print("\n" + "="*70)
-    print("🔢 ИНТЕРАКТИВНЫЙ РЕЖИМ: ВВОД СИМВОЛАМИ")
+    print("ИНТЕРАКТИВНЫЙ РЕЖИМ: ВВОД СИМВОЛАМИ")
     print("="*70)
     print("Вводите математические выражения, 'выход' для выхода")
     print("Пример: '2 + 3 * sqrt(4)' или '(1+2)*3'")
@@ -200,7 +200,7 @@ def interactive_math_mode():
 
     while True:
         try:
-            expression = input("\n🔢 Введите символами: ").strip()
+            expression = input("\nВведите символами: ").strip()
 
             if expression.lower() in ['выход', 'exit', 'quit', 'q']:
                 print("👋 Выход из режима символов")
@@ -212,15 +212,15 @@ def interactive_math_mode():
             result = process_math_input(expression)
 
             if result['success']:
-                print(f"\n🎯 Итог: {result['result']}")
+                print(f"\nИтог: {result['result']}")
             else:
-                print(f"\n❌ Не удалось вычислить")
+                print(f"\nНе удалось вычислить")
 
         except KeyboardInterrupt:
-            print("\n\n👋 Выход из программы")
+            print("\n\nВыход из программы")
             sys.exit(0)
         except Exception as e:
-            print(f"\n⚠️  Ошибка: {e}")
+            print(f"\nОшибка: {e}")
 
 def main():
     """Главная функция"""
@@ -228,17 +228,17 @@ def main():
 
     while True:
         print("\n" + "="*70)
-        print("🎯 ГЛАВНОЕ МЕНЮ")
+        print("ГЛАВНОЕ МЕНЮ")
         print("="*70)
-        print("1. 📝 Режим слов (ввод словами)")
-        print("2. 🔢 Режим символов (ввод математикой)")
-        print("0. 🚪 Выход")
+        print("1. Режим слов (ввод словами)")
+        print("2. Режим символов (ввод математикой)")
+        print("0. Выход")
         print("="*70)
 
         choice = input("\nВыберите режим (0-2): ").strip()
 
         if choice == '0':
-            print("\n👋 До свидания!")
+            print("\nДо свидания!")
             break
 
         elif choice == '1':
@@ -248,12 +248,12 @@ def main():
             interactive_math_mode()
 
         else:
-            print("❌ Неверный выбор")
+            print("Неверный выбор")
 
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n👋 Программа завершена")
+        print("\n\nПрограмма завершена")
     except Exception as e:
-        print(f"\n❌ Критическая ошибка: {e}")
+        print(f"\nКритическая ошибка: {e}")

@@ -106,7 +106,7 @@ class ASTVisualizer:
 
     def print_ast(self, node: ASTNode, title: str = "AST"):
         """Печатает AST"""
-        print(f"\n🌳 {title}:")
+        print(f"\n{title}:")
         print("=" * 50)
         print(self.visualize(node))
         print("=" * 50)
