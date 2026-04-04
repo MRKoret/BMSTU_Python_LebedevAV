@@ -1,32 +1,7 @@
-#!/usr/bin/env python3
-"""
-Модуль для лабораторной работы №5
-Операции с матрицами: поиск столбцов без нулей и сортировка строк по характеристикам
-"""
+def input_matrix_dimensions():
 
-__all__ = [
-    'input_matrix_dimensions',
-    'input_matrix',
-    'print_matrix',
-    'count_columns_without_zeros',
-    'calculate_row_characteristic',
-    'sort_rows_by_characteristics',
-    'get_row_characteristics',
-    'print_row_characteristics',
-    'main'
-]
-
-
-def input_matrix_dimensions() -> tuple:
-    """
-    Запрашивает у пользователя размеры матрицы
-
-    Returns:
-        кортеж (количество строк, количество столбцов)
-    """
     while True:
         try:
-            print("Запуск лабораторной работы №5...")
             rows = int(input("Введите количество строк матрицы: "))
             cols = int(input("Введите количество столбцов матрицы: "))
             if rows > 0 and cols > 0:
@@ -37,20 +12,10 @@ def input_matrix_dimensions() -> tuple:
             print("Пожалуйста, введите целые числа.")
 
 
-def input_matrix(rows: int, cols: int) -> list:
-    """
-    Запрашивает у пользователя ввод элементов матрицы
+def input_matrix(rows, cols):
 
-    Args:
-        rows: количество строк
-        cols: количество столбцов
-
-    Returns:
-        матрица в виде списка списков
-    """
     matrix = []
     print(f"\nВведите элементы матрицы {rows}x{cols}:")
-
     for i in range(rows):
         while True:
             try:
@@ -69,32 +34,15 @@ def input_matrix(rows: int, cols: int) -> list:
     return matrix
 
 
-def print_matrix(matrix: list, title: str = "Матрица") -> None:
-    """
-    Выводит матрицу на экран
+def print_matrix(matrix, title="Матрица"):
 
-    Args:
-        matrix: матрица для вывода
-        title: заголовок перед выводом
-    """
     print(f"\n{title}:")
     for row in matrix:
         print(" ".join(f"{elem:4}" for elem in row))
     print()
 
 
-def count_columns_without_zeros(matrix: list) -> int:
-    """
-    Подсчитывает количество столбцов, не содержащих нулевых элементов
-
-    Args:
-        matrix: исходная матрица
-
-    Returns:
-        количество столбцов без нулей
-    """
-    if not matrix:
-        return 0
+def count_columns_without_zeros(matrix):
 
     rows = len(matrix)
     cols = len(matrix[0])
@@ -112,17 +60,8 @@ def count_columns_without_zeros(matrix: list) -> int:
     return count
 
 
-def calculate_row_characteristic(row: list) -> int:
-    """
-    Вычисляет характеристику строки:
-    сумма положительных четных элементов
+def calculate_row_characteristic(row):
 
-    Args:
-        row: строка матрицы
-
-    Returns:
-        характеристика строки
-    """
     characteristic = 0
     for element in row:
         if element > 0 and element % 2 == 0:
@@ -130,16 +69,8 @@ def calculate_row_characteristic(row: list) -> int:
     return characteristic
 
 
-def sort_rows_by_characteristics(matrix: list) -> list:
-    """
-    Сортирует строки матрицы по характеристикам
+def sort_rows_by_characteristics(matrix):
 
-    Args:
-        matrix: исходная матрица
-
-    Returns:
-        новая матрица с отсортированными строками
-    """
     # Создаем список кортежей (характеристика, строка)
     rows_with_characteristics = []
     for row in matrix:
@@ -155,34 +86,16 @@ def sort_rows_by_characteristics(matrix: list) -> list:
     return sorted_matrix
 
 
-def get_row_characteristics(matrix: list) -> list:
-    """
-    Возвращает список характеристик всех строк
+def print_row_characteristics(matrix):
 
-    Args:
-        matrix: матрица
-
-    Returns:
-        список характеристик строк
-    """
-    return [calculate_row_characteristic(row) for row in matrix]
-
-
-def print_row_characteristics(matrix: list) -> None:
-    """
-    Выводит характеристики всех строк матрицы
-
-    Args:
-        matrix: матрица
-    """
     print("\nХарактеристики строк (сумма положительных четных элементов):")
     for i, row in enumerate(matrix):
         characteristic = calculate_row_characteristic(row)
         print(f"Строка {i + 1}: {characteristic}")
 
 
-def main() -> None:
-    """Основная функция программы (полностью соответствует твоему коду)"""
+def main():
+
     # Ввод размеров матрицы
     rows, cols = input_matrix_dimensions()
 
@@ -207,11 +120,7 @@ def main() -> None:
 
     # Вывод характеристик отсортированных строк
     print_row_characteristics(sorted_matrix)
-    print("Конец вывода")
-    print("-------------------------------------------")
+
+
 if __name__ == "__main__":
-    main()
-else:
-    print("Модуль лабораторной работы №5 импортирован")
-    print("-------------------------------------------")
     main()
